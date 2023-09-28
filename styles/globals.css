@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.green1 {
+  background-image: linear-gradient(to right, #48b760, #6bb748);
+}
+
+/* Tailwind Styles */
+
+/* Nav */
+
+.dropdown {
+  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
+}
+
+.dropdown_link {
+  @apply text-sm text-gray-700 hover:text-gray-500 font-medium;
+}
+
+.flex-center {
+  @apply flex justify-center items-center;
+}
+
+.flex-start {
+  @apply flex justify-start items-start;
+}
+
+.flex-end {
+  @apply flex justify-end items-center;
+}
+
+.flex-even {
+  @apply flex justify-evenly items-center;
+}
+
+.flex-between {
+  @apply flex justify-between items-center;
+}
+
+.outline_btn {
+  @apply rounded-full w-28 h-12 green1 py-1.5 px-5 text-white transition-all hover:bg-white font-bold font-sans text-center text-sm flex items-center justify-center;
+}
