@@ -46,7 +46,7 @@ const Nav = () => {
                     PRODUCTS
                 </Link>
 
-                <Link href="/create-prompt" 
+                <Link href="/weather" 
                 className="black_btn">
                     WEATHER
                 </Link>

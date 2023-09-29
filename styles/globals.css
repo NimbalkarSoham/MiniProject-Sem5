@@ -44,6 +44,12 @@
   @apply rounded-full w-28 h-12 green1 py-1.5 px-5 text-white transition-all hover:bg-white font-bold font-sans text-center text-sm flex items-center justify-center;
 }
 
+.form_input {
+}
+
+.form_textarea {
+}
+
 /* Hero */
 .head_text {
   @apply mt-5 ml-5 text-9xl font-extrabold leading-[1.15] text-green-600 sm:text-9xl;
@@ -53,22 +59,21 @@
   @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
 }
 
-.custom_farm_style{
+.custom_farm_style {
   @apply mt-5 text-9xl font-extrabold leading-[1.15] text-black sm:text-7xl;
 }
 
-.message1{
-  @apply mt-5 ml-5 text-base text-gray-600 ;
+.message1 {
+  @apply mt-5 ml-5 text-base text-gray-600;
 }
 
-.message2{
-  @apply mt-2 ml-5 text-base text-gray-950 ;
+.message2 {
+  @apply mt-2 ml-5 text-base text-gray-950;
 }
 
 .explore_btn {
   @apply mt-4 ml-5 rounded-full w-40 h-12 green1 py-1.5 px-5 text-white transition-all hover:bg-white font-bold font-sans text-center text-sm flex items-center justify-center;
 }
 
-.img_1{
-  
+.img_1 {
 }
