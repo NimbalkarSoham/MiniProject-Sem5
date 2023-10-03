@@ -1,0 +1,45 @@
+import mongoose, { Schema, model, models } from "mongoose";
+import User from "./users";
+import Product from './product';
+
+const OrderSchema = new mongoose.Schema(
+    {
+      owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+      },
+      customer: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+      },
+      product: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Products",
+      },
+      status: { 
+        type: String, 
+        required: true 
+      },
+      shippingAddress: {
+        fullName: { type: String, required: true },
+        address: { type: String, required: true },
+        city: { type: String, required: true },
+        country: { type: String, required: true },
+        postalCode: { type: String, required: true },
+      },
+      paymentMethod: { type: String, required: true, default: "Stripe" },
+      rate: { type: Number, required: true },
+      numberOfDays: { type: Number, required: true },
+      isPaid: { type: Boolean, required: true },
+      paidAt: { type: Date, required: true },
+      isProcessing: { type: Boolean, required: true },
+    },
+    { timestamps: true }
+  );
+  
+  const Order = mongoose.models.Order || mongoose.model("Order", OrderSchema);
+  
+  export default Order;
+  
