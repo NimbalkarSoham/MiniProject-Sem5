@@ -1,5 +1,68 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+.product-card {
+  width: 300px;
+  margin: 0 10px;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
+  border-radius: 5%;
+} 
+.product-image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.product-info {
+  padding: 10px;
+}
+
+.product-details {
+  margin-bottom: 10px;
+}
+
+.product-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.product-details li {
+  margin-bottom: 5px;
+}
+
+.product-actions {
+  text-align: center;
+  display: flex ;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.product-image {
+  flex: 1;
+}
+
+.product-info {
+  flex: 2;
+}
+
+
+button{
+  background-color: green;
+  color: white;
+  padding-right: 10%;
+  padding-left: 10%;
+  margin: 10px;
+  border-radius: 10px;
+}
+.vertical {
+  border-left: 2px solid black;
+  height: 75%;
+  position:absolute;
+  left: 50%;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

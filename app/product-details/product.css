@@ -1,0 +1,111 @@
+.product-card {
+    width: 300px;
+    margin: 0 10px;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
+    border-radius: 5%;
+} 
+.product-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.product-info {
+    padding: 10px;
+}
+
+.product-details {
+    margin-bottom: 10px;
+}
+
+.product-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.product-details li {
+    margin-bottom: 5px;
+}
+
+.product-actions {
+    text-align: center;
+    display: flex ;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: row;
+}
+
+.product-image {
+    flex: 1;
+}
+
+.product-info {
+    flex: 2;
+}
+
+
+button{
+    background-color: green;
+    color: white;
+    padding-right: 10%;
+    padding-left: 10%;
+    margin: 10px;
+    border-radius: 10px;
+}
+.vertical {
+    border-left: 2px solid black;
+    height: 75%;
+    position:absolute;
+    left: 50%;
+  }
+
+
+
+
+
+/* PHELE WALE CODE PE CSS TRY KIYA THA VOH CSS HAI
+  INPUT CSS LINK
+  https://uiverse.io/ercnersoy/dangerous-cat-78
+
+  CARD CSS LINK
+  https://uiverse.io/adamgiebl/strong-zebra-87
+*/
+/* CARD CSS */
+/* .card {
+    width: 50%;
+    padding: 20px;
+    border-radius: 30px;
+    background: #e0e0e0;
+    box-shadow: 15px 15px 30px #bebebe,
+               -15px -15px 30px #ffffff;
+    align-items: center;
+  }
+  .content{
+    justify-items: center;
+  } */
+
+
+  /* INPUT CSS*/
+
+  /* .input {
+    display: block;
+    margin: auto;
+    border: none;
+    padding: 1rem;
+    margin: 5px;
+    border-radius: 1rem;
+    background: #e8e8e8;
+    box-shadow: 20px 20px 60px #c5c5c5,
+           -20px -20px 60px #ffffff;
+    transition: 0.3s;
+   }
+   
+   .input:focus {
+    outline-color: #e8e8e8;
+    background: #e8e8e8;
+    box-shadow: inset 20px 20px 60px #c5c5c5,
+           inset -20px -20px 60px #ffffff;
+    transition: 0.3s;
+   } */
