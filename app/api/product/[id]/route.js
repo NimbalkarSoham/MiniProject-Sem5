@@ -1,9 +1,9 @@
 import Product from "@models/product";
-import { connectToDB } from "@utils/database";
+import { connectToDb } from "@utils/database";
 
 export const GET = async (request, { params }) => {
     try {
-        await connectToDB()
+        await connectToDb()
 
         const product = await Product.findById(params.id)
         if (!product) return new Response("Product Not Found", { status: 404 });

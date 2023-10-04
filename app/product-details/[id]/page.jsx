@@ -11,10 +11,14 @@ const page = ({ params }) => {
 
     useEffect(() => {
         const fetchOrder = async () => {
-            const response = await fetch(`/product-details/${params.id}`);
+            const response = await fetch(`/api/product/${params.id}`,{
+                method: 'GET',
+            });
+            
             const data = await response.json();
 
             setMyOrder(data);
+            //console.log(myOrder);
         };
 
         if (params.id) fetchOrder();
@@ -25,19 +29,19 @@ const page = ({ params }) => {
     return (
         <div>
         <label htmlFor="">Name</label>
-        <input type="text" value={myOrder.name || ''} /><br />
+        <input type="text" placeholder={myOrder.name || ''} /><br />
         <label htmlFor="">Description</label>
-        <input type="text" value={myOrder.description || ''} /><br />
+        <input type="text" placeholder={myOrder.description || ''} /><br />
         <label htmlFor="">Owner</label>
-        <input type="text" value={params.id || ''} /><br />
+        <input type="text" placeholder={myOrder.id || ''} /><br />
         <label htmlFor="">Rate</label>
-        <input type="text" value={myOrder.price || ''} /><br />
+        <input type="text" placeholder={myOrder.price || ''} /><br />
         <label htmlFor="">Type</label>
-        <input type="text" value={myOrder.type || ''} /><br />
+        <input type="text" placeholder={myOrder.type || ''} /><br />
         <label htmlFor="">Location</label>
-        <input type="text" value={myOrder.location || ''} /><br />
+        <input type="text" placeholder={myOrder.location || ''} /><br />
         <label htmlFor="">Contact</label>
-        <input type="text" value={myOrder.contact || ''} /><br />
+        <input type="text" placeholder={myOrder.contact || ''} /><br />
     </div>
     )
 }
