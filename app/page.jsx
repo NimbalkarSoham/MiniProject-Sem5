@@ -1,3 +1,4 @@
+import Feed from "@components/Feed";
 import React from "react";
 
 const LandingPage = () => {
@@ -34,7 +35,7 @@ const LandingPage = () => {
 </div>
 
 
-      {/* <Feed /> */}
+      <Feed />
     </section>
   );
 };

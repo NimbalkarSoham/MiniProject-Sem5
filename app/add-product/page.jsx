@@ -46,7 +46,7 @@ const CreateProduct = () => {
         setSubmitting(true);
         const form = e.currentTarget;
         const fileInput = Array.from(form.elements).find(({name}) => name === 'file')
-        console.log(fileInput);
+        //console.log(fileInput);
         const formData = new FormData();
 
         for( const file of fileInput.files ){
@@ -59,7 +59,7 @@ const CreateProduct = () => {
             method: 'POST',
             body: formData
         }).then(r => r.json());
-        console.log(data);
+        //console.log(data);
 
         
         try {

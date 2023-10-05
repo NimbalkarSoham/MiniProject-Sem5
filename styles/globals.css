@@ -7,7 +7,7 @@
   margin: 0 10px;
   box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
   border-radius: 5%;
-} 
+}
 .product-image {
   width: 100%;
   height: 100%;
@@ -37,7 +37,7 @@
 
 .product-actions {
   text-align: center;
-  display: flex ;
+  display: flex;
 }
 
 .product-card {
@@ -53,8 +53,7 @@
   flex: 2;
 }
 
-
-button{
+button {
   background-color: green;
   color: white;
   padding-right: 10%;
@@ -65,7 +64,7 @@ button{
 .vertical {
   border-left: 2px solid black;
   height: 75%;
-  position:absolute;
+  position: absolute;
   left: 50%;
 }
 
@@ -145,6 +144,16 @@ button{
 }
 
 .img_1 {
+}
+
+/* FEED */
+
+.prompt_layout {
+  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3;
+}
+
+.product-image {
+  @apply rounded-md;
 }
 
 /* PostCard */
