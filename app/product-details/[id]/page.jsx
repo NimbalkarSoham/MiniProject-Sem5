@@ -33,7 +33,6 @@ const page = ({ params }) => {
                 <div className="product-image">
                     <img src={myOrder.image || ''} alt="Product image" width="100000"/>
                 </div>
-                <div class = "vertical"></div>
                 <div className="product-info">
                     <h3><strong>{myOrder.name || ''}</strong></h3><br/>
                     <p><strong>Description: </strong></p>
@@ -48,7 +47,7 @@ const page = ({ params }) => {
                         </ul>
                     </div>
                     <div className="product-actions">
-                        <button className="btn btn-primary">Proceed to pay</button>
+                        <button className="btn explore_btn">Proceed to pay</button>
                     </div>
                 </div>
             </div>
