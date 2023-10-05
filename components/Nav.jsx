@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
+import MultilingualSelector from "./MultilingualSelector";
 const Nav = () => {
   const {data: session} = useSession();
 
@@ -36,12 +37,12 @@ const Nav = () => {
         {session?.user ? (
           <div className="flex gap-12 ">
             <div className="flex gap-20 flex-center">
-                <Link href="/create-prompt" 
+                <Link href="/" 
                 className="black_btn">
                     HOME
                 </Link>
 
-                <Link href="/create-prompt" 
+                <Link href="/" 
                 className="black_btn">
                     PRODUCTS
                 </Link>
@@ -51,20 +52,22 @@ const Nav = () => {
                     WEATHER
                 </Link>
 
-                <Link href="/create-prompt" 
+                <Link href="/" 
                 className="black_btn">
                     CART
                 </Link>
 
-                <Link href="/create-prompt" 
+                <Link href="/" 
                 className="black_btn">
                     WISHLIST
                 </Link>
 
-                <Link href="/create-prompt" 
+                <Link href="/" 
                 className="black_btn">
                     MY ORDERS
                 </Link>
+
+                <MultilingualSelector/>
             </div>
 
             <div className="flex gap-5">
@@ -86,7 +89,7 @@ const Nav = () => {
           <>
             {providers &&
               Object.values(providers).map((provider) =>
-              (
+              ( <>
                 <button
                   type="button"
                   key={provider.name}
@@ -95,6 +98,7 @@ const Nav = () => {
                   >
                   Sign In
                 </button>
+                </>
               )
             )}
           </>

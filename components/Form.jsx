@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 
-const Form = ({type, post, setPost, submitting, handleSubmit}) => {
+const Form = ({type, post, setPost, submitting, handleSubmit, handleImageChange}) => {
   return (
     <section className="w-full max-w-full flex-start flex-col">
       <h1 className="">
@@ -47,8 +47,11 @@ const Form = ({type, post, setPost, submitting, handleSubmit}) => {
           <label className="">
             <span className="font-satoshi font-semibold text-base text-gray-700">Image{` `} </span>
             <input 
-              value={post.image}
-              onChange={(e) => setPost({ ...post, image: e.target.value})}
+              type="file" 
+              name="file"
+              id="image"
+              accept="image/*"              
+              onChange={handleImageChange}
               placeholder="image"
               required
               className="form_input"
