@@ -6,7 +6,7 @@ import Product from '@models/product';
 
 export const GET = async (request, { params }) => {
     try {
-        await connectToDB()
+        await connectToDb()
 
         const order = await Order.findById(params.id)
         if (!order) return new Response("Order Not Found", { status: 404 });

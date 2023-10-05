@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 .product-card {
-  width: 300px;
+  width: 70%;
+  height: auto;
+  padding: 10px;
   margin: 0 10px;
   box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
   border-radius: 5%;
@@ -9,7 +11,9 @@
 .product-image {
   width: 100%;
   height: 100%;
+  margin: 10px;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .product-info {
@@ -18,6 +22,8 @@
 
 .product-details {
   margin-bottom: 10px;
+  display: inline;
+  align-items: right;
 }
 
 .product-details ul {
