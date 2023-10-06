@@ -7,11 +7,11 @@ export const POST = async (req) => {
     try {
         await connectToDb();
         const newOrder = new Order({
-            creator: customer,
+            // creator: customer,
             owner, 
             customer, 
             product, 
-            status, 
+            status:'OPEN', 
             shippingAddress, 
             paymentMethod, 
             rate, 
@@ -24,6 +24,6 @@ export const POST = async (req) => {
         await newOrder.save();
         return new Response(JSON.stringify(newOrder), {status: 201})
     } catch (error) {
-        return new Response("Failed to create a new product..", {status:500})
+        return new Response("Failed to create a new Order..", {status:500})
     }
 }
