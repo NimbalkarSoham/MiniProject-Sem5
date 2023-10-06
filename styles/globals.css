@@ -150,6 +150,9 @@ button {
 .green1 {
   background-image: linear-gradient(to right, #48b760, #6bb748);
 }
+.text-green1 {
+  color: linear-gradient(to right, #48b760, #6bb748);
+}
 
 /* Tailwind Styles */
 
