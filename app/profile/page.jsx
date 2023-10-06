@@ -4,7 +4,7 @@ import {useState,useEffect} from 'react'
 import {useSession} from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import Profile from '@components/Profile'
-import Link from 'next/link'
+
 
 const MyProfile = () => {
     const router = useRouter();
@@ -26,10 +26,10 @@ const MyProfile = () => {
   } 
   return (
     <>
-      <Link href={"/add-product"} className='outline_btn'>Add Product</Link>
+      
       <Profile
         name={session?.user.name}
-        desc="welcome to your personalized My Profile page"
+        desc="welcome to your personalized Profile page"
         data={posts}
         handleEdit={handleEdit}
         handleDelete={handleDelete}
