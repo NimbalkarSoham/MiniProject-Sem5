@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import React from 'react'
-//import '@app/product-details/product.css'
+// import '@app/product-details/product.css'
 
 const page = ({ params }) => {
 
@@ -25,16 +25,22 @@ const page = ({ params }) => {
         if (params.id) fetchOrder();
     }, [params.id]);
 
-
+    const handleGoBack = () => {
+        window.history.back(); // This will go back to the previous page
+    };
 
     return (
         <div>
             <div className="product-card">
+                <div className="product-nav">
+                    <button type="button" className="close-button btn btn-danger" onClick={handleGoBack} 
+                    >X</button>
+                </div>
                 <div className="product-image">
-                    <img src={myOrder.image || ''} alt="Product image" width="100000"/>
+                    <img src={myOrder.image || ''} alt="Product image" />
                 </div>
                 <div className="product-info">
-                    <h3><strong>{myOrder.name || ''}</strong></h3><br/>
+                    <h3><strong>{myOrder.name || ''}</strong></h3><br />
                     <p><strong>Description: </strong></p>
                     <p>{myOrder.description || ''}</p>
                     <div className="product-details">

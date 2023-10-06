@@ -4,7 +4,7 @@ import Card from './Card'
 const Profile = ({name,desc,data,handleEdit,handleDelete}) => {
   return (
     <section className='w-full'>
-     <h1 className='text-left'>{name} profile</h1> 
+     <h1 className='text-left text-2xl'>{name} profile</h1> 
      <p className='desc text-left'>{desc}</p>
      {/* <p>{JSON.stringify(data)}</p> */}
 

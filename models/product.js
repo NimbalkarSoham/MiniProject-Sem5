@@ -57,7 +57,14 @@ const productSchema = new Schema({
         type: Date,
         default: Date.now,
     },
-
+    location: {
+        type: String,
+        default: "",
+    },
+    contact: {
+        type: String,
+        default: ""
+    }
 });
 
 const Product = models.Product || model("Product",productSchema);

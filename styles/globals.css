@@ -1,10 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 .product-card {
+  margin:  auto;
   width: 70%;
-  height: auto;
   padding: 10px;
-  margin: 0 10px;
   box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
   border-radius: 5%;
 }
@@ -21,6 +20,7 @@
 }
 
 .product-details {
+  overflow: hidden;
   margin-bottom: 10px;
   display: inline;
   align-items: right;
@@ -53,20 +53,95 @@
   flex: 2;
 }
 
+/* close Button X button CSS */
+.close-button{
+  padding: 5px 10px; 
+  background-color: gray;
+  color: black; 
+  border: none; 
+  border-radius: 50%; 
+ cursor: pointer
+}
+.close-button:hover{
+  background-color: red;
+}
+
+/* FORM Component CSS */
+
+.form-card {
+  margin: auto;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb; 
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative; /* To position the close button */
+}
+
+/* Section */
+.w-full.max-w-full.flex-start.flex-col {
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+/* Title */
+.h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Form */
+form {
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Label */
+label {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Input */
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Textarea */
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Submit button */
 button {
-  background-color: green;
-  color: white;
-  padding-right: 10%;
-  padding-left: 10%;
-  margin: 10px;
-  border-radius: 10px;
+  background-color: #f37a12;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
 }
-.vertical {
-  border-left: 2px solid black;
-  height: 75%;
-  position: absolute;
-  left: 50%;
+
+/* Cancel link */
+.text-gray-500.text-sm {
+  text-decoration: none;
+  color: #777;
+  cursor: pointer;
 }
+
 
 @tailwind base;
 @tailwind components;

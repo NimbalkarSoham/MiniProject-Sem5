@@ -70,7 +70,8 @@ const CreateProduct = () => {
                     name: post.name,
                     description: post.description,
                     price: post.price,
-                    image: data.secure_url
+                    image: data.secure_url,
+                    location: post.location
                 })
             })
 
