@@ -42,7 +42,7 @@ const Nav = () => {
                     HOME
                 </Link>
 
-                <Link href="/" 
+                <Link href="/#feed" 
                 className="black_btn">
                     PRODUCTS
                 </Link>
@@ -52,7 +52,7 @@ const Nav = () => {
                     WEATHER
                 </Link>
 
-                <Link href="/" 
+                {/* <Link href="/" 
                 className="black_btn">
                     CART
                 </Link>
@@ -65,7 +65,7 @@ const Nav = () => {
                 <Link href="/" 
                 className="black_btn">
                     MY ORDERS
-                </Link>
+                </Link> */}
 
                 <MultilingualSelector/>
             </div>

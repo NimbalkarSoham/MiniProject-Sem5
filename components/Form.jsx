@@ -1,21 +1,33 @@
 import Link from "next/link"
 
 
-const Form = ({type, post, setPost, submitting, handleSubmit, handleImageChange}) => {
+const Form = ({ type, post, setPost, submitting, handleSubmit, handleImageChange }) => {
+
+  const handleGoBack = () => {
+    window.history.back(); // This will go back to the previous page
+  };
+
   return (
     <section className="w-full max-w-full flex-start flex-col">
-      <h1 className="">
-        <span className="">{type} Product</span>
-      </h1>
+      <div className="form-card">
+        <div className="product-nav">
+          <button type="button" className="close-button btn btn-danger" onClick={handleGoBack}
+          >X</button>
+        </div>
+        <center>
+        <h1 className="text-2xl" >
+          <b><span className="">{type} Product</span></b>
+        </h1>
+        </center>
 
-      <form
-        onSubmit={handleSubmit}
-        className="mt-10 w-full max-w-2xl flex flex-col gap-7 ">
+        <form
+          onSubmit={handleSubmit}
+          className="mt-10 w-full max-w-2xl flex flex-col gap-7 ">
           <label className="">
             <span className="font-satoshi font-semibold text-base text-gray-700">Name{` `} <span className="font-normal">(#example)</span></span>
-            <input 
+            <input
               value={post.name}
-              onChange={(e) => setPost({ ...post, name: e.target.value})}
+              onChange={(e) => setPost({ ...post, name: e.target.value })}
               placeholder="Product name"
               required
               className="form_input"
@@ -24,9 +36,9 @@ const Form = ({type, post, setPost, submitting, handleSubmit, handleImageChange}
 
           <label className="">
             <span className="font-satoshi font-semibold text-base text-gray-700">Product Description</span>
-            <textarea 
+            <textarea
               value={post.description}
-              onChange={(e) => setPost({ ...post, description: e.target.value})}
+              onChange={(e) => setPost({ ...post, description: e.target.value })}
               placeholder="Write your product info here.."
               required
               className="form_textarea"
@@ -35,9 +47,10 @@ const Form = ({type, post, setPost, submitting, handleSubmit, handleImageChange}
 
           <label className="">
             <span className="font-satoshi font-semibold text-base text-gray-700">Price{` `} </span>
-            <input 
+            <input
+            type="Number"
               value={post.price}
-              onChange={(e) => setPost({ ...post, price: e.target.value})}
+              onChange={(e) => setPost({ ...post, price: e.target.value })}
               placeholder="price"
               required
               className="form_input"
@@ -45,12 +58,23 @@ const Form = ({type, post, setPost, submitting, handleSubmit, handleImageChange}
           </label>
 
           <label className="">
+            <span className="font-satoshi font-semibold text-base text-gray-700">Location{` `} <span className="font-normal">(#example)</span></span>
+            <input
+              value={post.location}
+              onChange={(e) => setPost({ ...post, location: e.target.value })}
+              placeholder="Product location"
+              required
+              className="form_input"
+            />
+          </label>
+
+          <label className="">
             <span className="font-satoshi font-semibold text-base text-gray-700">Image{` `} </span>
-            <input 
-              type="file" 
+            <input
+              type="file"
               name="file"
               id="image"
-              accept="image/*"              
+              accept="image/*"
               onChange={handleImageChange}
               placeholder="image"
               required
@@ -62,12 +86,13 @@ const Form = ({type, post, setPost, submitting, handleSubmit, handleImageChange}
             <Link href='/' className="text-gray-500 text-sm">Cancel</Link>
             <button
               type="submit"
-              disabled = {submitting}
+              disabled={submitting}
               className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-black">
-              {submitting ? `${type}...`: type}
+              {submitting ? `${type}...` : type}
             </button>
           </div>
-      </form>
+        </form>
+      </div>
     </section>
   )
 }

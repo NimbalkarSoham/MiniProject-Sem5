@@ -18,7 +18,7 @@ const Card = ({ key, post, handleEdit, handleDelete }) => {
           <div className="flex-col flex justify-start items-center gap-3 cursor-pointer">
             <div className="flex flex-col">
               <h3 className="font-satoshi font-semibold text-gray-900">
-                {post.name}
+                <b>{post.name}</b>
               </h3>
             </div>
             <div className="img">
@@ -31,8 +31,8 @@ const Card = ({ key, post, handleEdit, handleDelete }) => {
               />
             </div>
             <div className="description">
-              <p>Description: {post.description}</p>
-              <p>Rate:{post.price}</p>
+              <p><b>Description:</b> {post.description}</p>
+              <p><b>Rate: </b>{post.price}</p>
             </div>
 
           </div>

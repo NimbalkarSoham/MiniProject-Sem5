@@ -28,8 +28,8 @@ const MyProfile = () => {
     <>
       <Link href={"/add-product"} className='outline_btn'>Add Product</Link>
       <Profile
-        name="my"
-        desc="welcome to your personalized MyProfile page"
+        name={session?.user.name}
+        desc="welcome to your personalized My Profile page"
         data={posts}
         handleEdit={handleEdit}
         handleDelete={handleDelete}
