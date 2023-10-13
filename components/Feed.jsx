@@ -7,12 +7,14 @@ const PostCardList = ({allPosts}) => {
   return (
     <div className='mt-16 prompt_layout'>
       {allPosts.map((post) => (
-        <Card
+        post.isFeatured == true?(
+          <Card
           key={post._id}
           post={post}
           handleEdit={() => {}}
           handleDelete={() => {}}
         />
+        ):(<></>)
       ))}
     </div>
   );
@@ -54,7 +56,7 @@ const Feed = () => {
   };
 
   return (
-    <div className="mt-16 prompt_layout mx-5">
+    <div className="mt-16 mx-5">
       <form className="relative w-full flex-center">
         <input
           type="text"

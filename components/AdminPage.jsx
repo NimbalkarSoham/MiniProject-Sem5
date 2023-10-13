@@ -20,18 +20,22 @@ const AdminPage = () => {
 
     
   return (
-    <div className='mt-16 prompt_layout mx-5'>
-        {allPosts.map((post) => (
-            post.isFeatured == false?(
-                <Card
-                    key={post._id}
-                    post={post}
-                    handleEdit={() =>{}}
-                    handleDelete={() =>{}}
-                />
-            ):(<></>)
-        ))}
-    </div>
+    <>
+        <h1>Products pending for verification</h1>
+        <div className='mt-16 prompt_layout mx-5'>
+            {allPosts.map((post) => (
+                post.isFeatured == false?(
+                    <Card
+                        key={post._id}
+                        post={post}
+                        handleEdit={() =>{}}
+                        handleDelete={() =>{}}
+                    />
+                ):(<></>)
+            ))}
+        </div>
+    </>
+    
   )
 }
 
