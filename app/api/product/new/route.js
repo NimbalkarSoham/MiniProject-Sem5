@@ -12,7 +12,7 @@ export const POST = async (req) => {
             description,
             price,
             image,
-            location
+            location,
         })
 
         await newProduct.save();

@@ -7,6 +7,8 @@ import React from 'react'
 // import '@app/product-details/product.css'
 
 const page = ({ params }) => {
+    const {data: session} = useSession();
+    const router = useRouter();
 
     const [myOrder, setMyOrder] = useState([]);
 
@@ -28,6 +30,22 @@ const page = ({ params }) => {
     const handleGoBack = () => {
         window.history.back(); // This will go back to the previous page
     };
+
+    const handleVerification = async() => {
+        debugger;
+        try {
+            console.log(params.id);
+            const response = await fetch(`/api/product/${params.id}`,{
+                method: 'PATCH',
+            });
+
+            if(response.ok){
+                router.push('/');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <div>
@@ -53,7 +71,12 @@ const page = ({ params }) => {
                         </ul>
                     </div>
                     <div className="product-actions">
-                        <button className="btn explore_btn">Proceed to pay</button>
+                        {
+                            (session.user?.email=="2021.soham.nimbalkar@ves.ac.in")?(
+                                <button id="verify-btn" onClick={handleVerification} className="btn explore_btn">Verify</button>
+                            ):(<button id="buy-btn" className="btn explore_btn">Proceed to pay</button>)
+                        }
+                        
                     </div>
                 </div>
             </div>

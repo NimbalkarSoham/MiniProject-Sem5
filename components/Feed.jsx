@@ -22,12 +22,16 @@ const Feed = () => {
   return (
     <div className='mt-16 prompt_layout mx-5'>
       {allPosts.map((post) => (
-        <Card
-          key={post._id}
-          post={post}
-          handleEdit={() =>{}}
-          handleDelete={() =>{}}
-        />
+        post.isFeatured == true?(
+          <Card
+            key={post._id}
+            post={post}
+            handleEdit={() =>{}}
+            handleDelete={() =>{}}
+          />
+        ):(
+          <></>
+        )
       ))}
     </div>
   )

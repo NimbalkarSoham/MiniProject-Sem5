@@ -1,11 +1,36 @@
+"use client"
 import Feed from "@components/Feed";
 import React from "react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import AdminPage from "@components/AdminPage";
 
 const LandingPage = () => {
+  const {data: session} = useSession();
+  const [userData, setUserData] = useState({});
+  const fetchUser = async() => {
+    debugger;
+    const response = await fetch(`/api/users/${session?.user.id}/`);
+    const user = await response.json();
+    setUserData(user);
+    //console.log(userData);
+    localStorage.setItem('user',JSON.stringify(userData));
+  }
+  useEffect(() => {
+    if(session?.user.id)
+      fetchUser()
+  }, [])
+
+  if(session?.user.email == "2021.soham.nimbalkar@ves.ac.in"){
+    return(
+      <AdminPage/>
+    )
+  }
+  
   return (
     <section className="w-full  flex-col">
-      <div className="flex flex-row block justify-between ">
+      <div className="flex flex-row  justify-between ">
         <div className="col1">
           <div className="flex items-start">
             {" "}
