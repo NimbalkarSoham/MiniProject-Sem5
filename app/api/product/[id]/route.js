@@ -16,7 +16,7 @@ export const GET = async (request, { params }) => {
 }
 // only for verification
 export const PATCH = async(request, { params }) => {
-    //const{ verified } = await request.json();
+     const{ price } = await request.json();
      try {
         await connectToDb();
         console.log("helo");
@@ -25,6 +25,7 @@ export const PATCH = async(request, { params }) => {
         if(!product) return new Response("Product not found", {status: 404});
 
         product.isFeatured = true;
+        product.brand = price;
 
         await product.save();
 
@@ -33,3 +34,16 @@ export const PATCH = async(request, { params }) => {
         return new Response("Could not update prompt", {status:500})
      }
 } 
+
+
+export const DELETE = async ( request, { params }) => {
+    try {
+        await connectToDb();
+
+        await Product.findByIdAndRemove(params.id);
+
+        return new Response("Prompt deleted successfully", {status: 200})
+    } catch (error) {
+        return new Response("Prompt could not be deleted", {status: 500})
+    }
+}
