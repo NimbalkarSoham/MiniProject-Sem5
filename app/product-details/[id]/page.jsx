@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import React from 'react'
+import { checkout } from "@lib/checkout";
 // import '@app/product-details/product.css'
 
 const page = ({ params }) => {
@@ -35,8 +36,12 @@ const page = ({ params }) => {
         debugger;
         try {
             console.log(params.id);
+            const price = document.getElementById("price_string").value;
             const response = await fetch(`/api/product/${params.id}`,{
                 method: 'PATCH',
+                body: JSON.stringify({
+                    price: price,
+                })
             });
 
             if(response.ok){
@@ -45,6 +50,43 @@ const page = ({ params }) => {
         } catch (error) {
             console.log(error);
         }
+    }
+
+
+    const handleCheckout = async () => {
+        debugger;
+        console.log(myOrder.brand);
+        const shipping_address = document.getElementById("shipping_address").value;
+        try {
+            await fetch(`/api/product/${params.id}`,{
+                method: 'DELETE',
+            });
+
+            const response = await fetch(`/api/order/new`,{
+                method:'POST',
+                body: JSON.stringify({
+                    owner:myOrder.creator, 
+                    customer:session.user.id, 
+                    product:myOrder._id, 
+                    shippingAddress:shipping_address,  
+                    rate:myOrder.price
+                })
+            });
+
+            if(response.ok){
+                await checkout({
+                    lineItems:[{price:myOrder.brand, quantity:1}]
+                });
+            }
+        } catch (error) {
+            
+        }
+        
+
+        
+
+        
+
     }
 
     return (
@@ -68,13 +110,26 @@ const page = ({ params }) => {
                             <li><strong>Type: </strong>{myOrder.type || ''}</li>
                             <li><strong>Location:</strong> {myOrder.location || ''}</li>
                             <li><strong>Contact:</strong> {myOrder.contact || ''}</li>
+                            {
+                                (session?.user.email=="2021.soham.nimbalkar@ves.ac.in")?(
+                                    <>
+                                    <li><strong>Enter price-string:</strong></li>
+                                    <input type="text" name="price_string" id="price_string" />
+                                    </>
+                                    
+                                ):(<>
+                                    <li><strong>Enter Delivery Address:</strong></li>
+                                    <input type="text" name="shipping_address" id="shipping_address" />
+                                </>)
+                            }
+                            
                         </ul>
                     </div>
                     <div className="product-actions">
                         {
-                            (session.user?.email=="2021.soham.nimbalkar@ves.ac.in")?(
+                            (session?.user.email=="2021.soham.nimbalkar@ves.ac.in")?(
                                 <button id="verify-btn" onClick={handleVerification} className="btn explore_btn">Verify</button>
-                            ):(<button id="buy-btn" className="btn explore_btn">Proceed to pay</button>)
+                            ):(<button id="buy-btn" onClick={handleCheckout} className="btn explore_btn">Proceed to pay</button>)
                         }
                         
                     </div>
