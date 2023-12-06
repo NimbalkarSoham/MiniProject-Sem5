@@ -10,10 +10,6 @@ const productSchema = new Schema({
         type: String,
         required: true
     },
-    richDescription: {
-        type: String,
-        default: ''
-    },
     image: {
         type: String,
         default: ''
@@ -26,26 +22,18 @@ const productSchema = new Schema({
         default: ''
     },
     price : {
-        type: String,
-        default: ''
+        type: Number,
+        default: 0
     },
     status: {
         type: String,
+        default: 'not-verified'
     },
-    // category: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Category',
-    //     required:true
-    // },
     creator: {
         type: Schema.Types.ObjectId,
         ref: User,
     },
     rating: {
-        type: Number,
-        default: 0,
-    },
-    numReviews: {
         type: Number,
         default: 0,
     },

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { checkout } from "@lib/checkout";
+import Link from "next/link";
 // import '@app/product-details/product.css'
 
 const page = ({ params }) => {
@@ -12,14 +13,27 @@ const page = ({ params }) => {
   const router = useRouter();
 
   const [myOrder, setMyOrder] = useState([]);
+  const [Owner, setOwner] = useState(null);
+
+  
 
   useEffect(() => {
     const fetchOrder = async () => {
+      //debugger;
       const response = await fetch(`/api/product/${params.id}`, {
         method: "GET",
       });
 
       const data = await response.json();
+
+      const ownerReq = await fetch(`/api/users/${data.creator}`,{
+        method: 'GET',
+      });
+
+      const owner = await ownerReq.json();
+
+      setOwner(owner.name);
+      console.log(owner)
 
       setMyOrder(data);
       //console.log(myOrder);
@@ -27,6 +41,8 @@ const page = ({ params }) => {
 
     if (params.id) fetchOrder();
   }, [params.id]);
+
+
 
   const handleGoBack = () => {
     window.history.back(); // This will go back to the previous page
@@ -107,7 +123,7 @@ const page = ({ params }) => {
           <div className="product-details">
             <ul>
               <li>
-                <strong>Owner:</strong> {myOrder.creator || ""}
+                <strong>Owner:</strong> <Link href={`/profile/${myOrder.creator}`}>{Owner}</Link>
               </li>
               <li>
                 <strong>Rate:</strong> {myOrder.price || ""}/Day

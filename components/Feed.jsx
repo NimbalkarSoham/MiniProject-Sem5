@@ -7,7 +7,7 @@ const PostCardList = ({allPosts}) => {
   return (
     <div className='mt-16 prompt_layout'>
       {allPosts.map((post) => (
-        post.isFeatured == true?(
+        post.status == 'verified'?(
           <Card
           key={post._id}
           post={post}

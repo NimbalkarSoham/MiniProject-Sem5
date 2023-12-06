@@ -5,7 +5,6 @@ import {connectToDb} from '@utils/database'
 export const GET=async(request,{params})=>{
     try{
         await connectToDb() 
-         console.log('Connected to the database');
          
         const products=await Product.find({creator:params.id}).populate('creator');
         //console.log('Found products:', products);

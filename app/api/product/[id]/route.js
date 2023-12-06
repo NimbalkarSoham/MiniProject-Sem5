@@ -19,12 +19,11 @@ export const PATCH = async(request, { params }) => {
      const{ price } = await request.json();
      try {
         await connectToDb();
-        console.log("helo");
         const product = await Product.findById(params.id);
         console.log(product);
         if(!product) return new Response("Product not found", {status: 404});
 
-        product.isFeatured = true;
+        product.status = 'verified';
         product.brand = price;
 
         await product.save();
