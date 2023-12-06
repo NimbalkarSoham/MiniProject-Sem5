@@ -22,7 +22,7 @@ const LandingPage = () => {
       fetchUser()
   }, [])
 
-  if(session?.user.email == "2021.vishal.gori@ves.ac.in"){
+  if(session?.user.email == "2021.soham.nimbalkar@ves.ac.in"){
     return(
       <AdminPage/>
     )

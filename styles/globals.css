@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 .product-card {
-  margin:  auto;
+  margin: auto;
   width: 70%;
   padding: 10px;
   box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
@@ -10,7 +10,7 @@
 .product-image {
   width: 100%;
   height: 100%;
-  margin: 10px;
+  max-width: 300px;
   overflow: hidden;
   border-radius: 10px;
 }
@@ -54,15 +54,15 @@
 }
 
 /* close Button X button CSS */
-.close-button{
-  padding: 5px 10px; 
+.close-button {
+  padding: 5px 10px;
   background-color: gray;
-  color: black; 
-  border: none; 
-  border-radius: 50%; 
- cursor: pointer
+  color: black;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
 }
-.close-button:hover{
+.close-button:hover {
   background-color: red;
 }
 
@@ -72,7 +72,7 @@
   margin: auto;
   width: 100%;
   background-color: #ffffff;
-  border: 1px solid #e5e7eb; 
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -141,7 +141,6 @@ button {
   color: #777;
   cursor: pointer;
 }
-
 
 @tailwind base;
 @tailwind components;
@@ -227,7 +226,7 @@ button {
 /* FEED */
 
 .prompt_layout {
-  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3;
+  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-4 xl:gap-16;
 }
 
 .product-image {
