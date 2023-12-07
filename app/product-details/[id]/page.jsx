@@ -53,16 +53,21 @@ const page = ({ params }) => {
     try {
       console.log(params.id);
       const price = document.getElementById("price_string").value;
-      const response = await fetch(`/api/product/${params.id}`, {
-        method: "PATCH",
-        body: JSON.stringify({
-          price: price,
-        }),
-      });
+      if(price==""){
+        alert("Enter price string YZ")
+      } else{
+        const response = await fetch(`/api/product/${params.id}`, {
+          method: "PATCH",
+          body: JSON.stringify({
+            price: price,
+          }),
+        });
 
-      if (response.ok) {
-        router.push("/");
+        if (response.ok) {
+          router.push("/");
+        }
       }
+      
     } catch (error) {
       console.log(error);
     }
