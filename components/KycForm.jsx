@@ -94,7 +94,7 @@ const KycForm = () => {
                     <p>Aadhar No:</p>
                     <input type="number" name="aadharNo" id="aadharNo" onChange={(e) => setFormInputs({...formInputs, aadharNo:e.target.value})}/>
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit" className='explore_btn'>Submit</button>
                 <button type="reset">Reset</button>
             </form>
 

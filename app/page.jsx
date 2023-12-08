@@ -11,7 +11,7 @@ const LandingPage = () => {
   const {data: session} = useSession();
   const [userData, setUserData] = useState({});
   const fetchUser = async() => {
-    debugger;
+    //debugger;
     const response = await fetch(`/api/users/${session?.user.id}/`);
     const user = await response.json();
     setUserData(user);
@@ -36,7 +36,8 @@ const LandingPage = () => {
   }
   
   return (
-    <section className="w-full  flex-col">
+    <section className="w-full  flex-col items-center">
+      {userData.isVerified == "under-verification"?(<p className="text-red-600 w-fit">Note: Your account is under verification. Please wait until your account is verified by the Admin </p>):(<></>)}
       <div className="flex flex-row  justify-between ">
         <div className="col1">
           <div className="flex items-start">

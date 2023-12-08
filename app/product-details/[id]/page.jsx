@@ -19,7 +19,7 @@ const page = ({ params }) => {
 
   useEffect(() => {
     const fetchOrder = async () => {
-      //debugger;
+      debugger;
       const response = await fetch(`/api/product/${params.id}`, {
         method: "GET",
       });
