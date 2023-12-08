@@ -20,19 +20,19 @@ const userSchema = new Schema({
         type: String,
         default: ''
     },
-    isAdmin: {
-        type: Boolean,
-        default: false,
+    isVerified: {
+        type: String,
+        default: 'not-verified',
     },
     street: {
         type: String,
         default: ''
     },
-    apartment: {
+    AadharCard: {
         type: String,
         default: ''
     },
-    zip :{
+    AadharNo :{
         type: String,
         default: ''
     },

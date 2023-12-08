@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import AdminPage from "@components/AdminPage";
+import KycForm from "@components/KycForm";
 
 const LandingPage = () => {
   const {data: session} = useSession();
@@ -20,11 +21,17 @@ const LandingPage = () => {
   useEffect(() => {
     if(session?.user.id)
       fetchUser()
-  }, [])
+  }, [session?.user.id])
 
   if(session?.user.email == "2021.soham.nimbalkar@ves.ac.in"){
     return(
       <AdminPage/>
+    )
+  }
+  
+  if(userData.isVerified=="not-verified"){
+    return(
+      <KycForm />
     )
   }
   
