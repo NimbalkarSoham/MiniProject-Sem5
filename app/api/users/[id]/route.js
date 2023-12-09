@@ -24,7 +24,7 @@ export const PATCH = async (request, { params }) => {
         const user = await User.findById(params.id)
         if (!user) return new Response("User Not Found", { status: 404 });
 
-        user.isAdmin = true;
+        user.isVerified = "verified";
         await user.save();
 
         return new Response(JSON.stringify(user), {status: 200})
