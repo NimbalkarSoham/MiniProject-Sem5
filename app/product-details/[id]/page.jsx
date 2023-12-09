@@ -79,8 +79,13 @@ const page = ({ params }) => {
     const shipping_address = document.getElementById("shipping_address").value;
     try {
       await fetch(`/api/product/${params.id}`, {
-        method: "DELETE",
+        method: "PUT",
+        body: JSON.stringify({
+          status: "soldOut!",
+        }),
       });
+      
+      console.log('Product status updated successfully');
 
       const response = await fetch(`/api/order/new`, {
         method: "POST",
@@ -98,7 +103,9 @@ const page = ({ params }) => {
           lineItems: [{ price: myOrder.brand, quantity: 1 }],
         });
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   return (
