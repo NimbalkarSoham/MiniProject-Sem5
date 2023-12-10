@@ -60,12 +60,12 @@ const Nav = () => {
                 <Link href="/" 
                 className="black_btn">
                     WISHLIST
-                </Link>
+                </Link> */}
 
-                <Link href="/" 
+                <Link href={`/my-orders/${session?.user.id}`} 
                 className="black_btn">
                     MY ORDERS
-                </Link> */}
+                </Link>
 
                 <MultilingualSelector/>
             </div>
