@@ -2,17 +2,23 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import {app} from '../../config'
 
 const myOrders = ({ params }) => {
+
+    const auth = getAuth(app);
 
     const [myOrders, setMyOrders] = useState(null)
     const [otpSent, setOtpSent] = useState(false)
     const [submitting, setSubmitting] = useState(false)
+    const [otp, setOtp] = useState("");
+    const [ confirmationResult, setConfirmationResult] = useState(null);
 
     useEffect(() => {
       
         const fetchOrders = async() => {
-            debugger;
+            // debugger;
             const res = await fetch(`/api/users/${params.id}/orders`,{
                 method: 'GET',
             })
@@ -23,7 +29,19 @@ const myOrders = ({ params }) => {
         if(myOrders == null){
             fetchOrders()
         }
-    }, [])
+
+        window.recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
+            'size': 'invisible',
+            'callback': (response) => {
+                // sendOtp();
+                console.log("Recaptcha verified");
+            },
+            // 'expired-callback': () => {
+            //     console.log("Recaptcha expired");
+            // },
+            // defaultCountry: "IN"
+        });
+    }, [auth])
 
     const handleReturn = async() => {
         var input = document.getElementById("otp");
@@ -34,21 +52,50 @@ const myOrders = ({ params }) => {
             input.classList.add("hidden");
         }
     }
-
-    const sendOtp = async() => {
+    const removeOrder = async (order) => {
+        debugger;
+        const res = await fetch(`/api/order/${order._id}`,{
+            method: 'PUT',
+            body: JSON.stringify({
+                productId: order.product._id,
+            })
+        })
+        if(res.ok) {alert("Product Successfully Returned");}
+        
+        
+    }
+    const sendOtp = async(contact) => {
         debugger;
         setSubmitting(true)
         // Code for sending otp to owner..
         
+        try {
+            const formattedPhoneNumber = "+91" + contact;
+            const confirmation = await signInWithPhoneNumber(auth, formattedPhoneNumber, window.recaptchaVerifier);
+            setConfirmationResult(confirmation);
+            setSentOtp(true);
+            alert('OTP has been sent');
+        } catch (error) {
+            console.error(error);
+            // Handle error (logging, alert, etc.)
+        }
         setOtpSent(true)
         setSubmitting(false)
     }
 
-    const verifyOTP = async() => {
+    const verifyOTP = async(order) => {
         debugger;
         setSubmitting(true)
         // Code for Verifying ..
-        
+        console.log(otp);
+        await confirmationResult.confirm(otp)
+        .then(async res => {
+            removeOrder(order);
+        })
+        .catch(err => {
+            console.log(err);
+            alert("Invalid OTP");
+        })
         setOtpSent(false)
         setSubmitting(false)
     }
@@ -59,6 +106,7 @@ const myOrders = ({ params }) => {
             <div className="head">
                 <h1>My Orders</h1>
             </div>
+            <div id="recaptcha-container"></div>
             <div className="list flex flex-col gap-4">
                 {myOrders?.map((order) => (
                     <div className="orderCard flex flex-row gap-10 bg-slate-300 p-4 rounded-lg">
@@ -75,10 +123,10 @@ const myOrders = ({ params }) => {
                             <h1 className='font-light'><span className='font-medium'>Ordered on:&nbsp;</span>{order?.createdAt.substring(0,10)}</h1>
                         </div>
                         <div className="return-btn">
-                            <button className='green1 text-white px-3 py-2' onClick={handleReturn}>Return</button>
-                            <div id='otp' className="otp hidden"> {/* Is div ke andar form bana. */}
-                                <input type="text" id='otp-input' className='my-3 w-36 p-1 border-[1px] border-black' placeholder='Enter OTP' />
-                                <button className='green1 text-white px-3 py-2 mx-4' id='otp-btn' onClick={otpSent? verifyOTP : sendOtp}>{otpSent?"Verify":"Send OTP"}{submitting?"..":""}</button>
+                        <button className='green1 text-white px-3 py-2' onClick={handleReturn}>Return</button>
+                        <div id='otp' className="otp hidden"> {/* Is div ke andar form bana. */}
+                                <input type="number" id='otp-input' className='my-3 w-36 p-1 border-[1px] border-black' placeholder='Enter OTP' onChange={(e) => {setOtp(e.target.value)}}/>
+                                <button className='green1 text-white px-3 py-2 mx-4' id='otp-btn' onClick={otpSent?  () => {verifyOTP(order)} : () => {sendOtp(order.owner.phone)}}>{otpSent?"Verify":"Send OTP"}{submitting?"..":""}</button>
                             </div>
                         </div>
                     </div>
