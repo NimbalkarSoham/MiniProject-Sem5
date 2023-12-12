@@ -24,13 +24,13 @@ const Form = ({ type, post, setPost, submitting, handleSubmit, handleImageChange
           onSubmit={handleSubmit}
           className="mt-10 w-full max-w-2xl flex flex-col gap-7 ">
           <label className="">
-            <span className="font-satoshi font-semibold text-base text-gray-700">Name{` `} <span className="font-normal">(#example)</span></span>
+            <span className="font-satoshi font-semibold text-base text-gray-700">Name{` `} </span>
             <input
               value={post.name}
               onChange={(e) => setPost({ ...post, name: e.target.value })}
               placeholder="Product name"
               required
-              className="form_input"
+              className="form_input px-2 py-1"
             />
           </label>
 
@@ -41,7 +41,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit, handleImageChange
               onChange={(e) => setPost({ ...post, description: e.target.value })}
               placeholder="Write your product info here.."
               required
-              className="form_textarea"
+              className="form_textarea px-2 py-1"
             />
           </label>
 
@@ -53,22 +53,22 @@ const Form = ({ type, post, setPost, submitting, handleSubmit, handleImageChange
               onChange={(e) => setPost({ ...post, price: e.target.value })}
               placeholder="price"
               required
-              className="form_input"
+              className="form_input px-2 py-1"
             />
           </label>
 
           <label className="">
-            <span className="font-satoshi font-semibold text-base text-gray-700">Location{` `} <span className="font-normal">(#example)</span></span>
+            <span className="font-satoshi font-semibold text-base text-gray-700">Location{` `} </span>
             <input
               value={post.location}
               onChange={(e) => setPost({ ...post, location: e.target.value })}
               placeholder="Product location"
               required
-              className="form_input"
+              className="form_input px-2 py-1"
             />
           </label>
 
-          <label className="">
+          <label className="flex flex-col">
             <span className="font-satoshi font-semibold text-base text-gray-700">Image{` `} </span>
             <input
               type="file"
@@ -78,7 +78,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit, handleImageChange
               onChange={handleImageChange}
               placeholder="image"
               required
-              className="form_input"
+              className="form_input px-2 py-2 w-fit"
             />
           </label>
 
@@ -87,7 +87,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit, handleImageChange
             <button
               type="submit"
               disabled={submitting}
-              className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-black">
+              className="px-5 py-1.5 text-base green1 rounded-md text-white">
               {submitting ? `${type}...` : type}
             </button>
           </div>
