@@ -73,7 +73,7 @@ const Nav = () => {
             <div className="flex gap-5">
                 <button type="button" onClick={signOut} className="outline_btn">Sign Out</button>
 
-                <Link href="/profile">
+                <Link href={`/profile/${session?.user.id}`}>
                 <Image 
                     src={session?.user.image}
                     width={45}

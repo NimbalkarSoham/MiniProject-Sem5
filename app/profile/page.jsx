@@ -3,7 +3,7 @@ import React from 'react'
 import {useState,useEffect} from 'react'
 import {useSession} from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import Profile from '@components/Profile'
+import ProfileFeed from '@components/ProfileFeed'
 
 
 const MyProfile = () => {
@@ -28,7 +28,7 @@ const MyProfile = () => {
   return (
     <>
       
-      <Profile
+      <ProfileFeed
         name={session?.user.name}
         desc="welcome to your personalized Profile page"
         data={posts}
