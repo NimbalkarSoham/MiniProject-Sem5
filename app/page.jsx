@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import AdminPage from "@components/AdminPage";
 import KycForm from "@components/KycForm";
+import Link from "next/link";
 
 const LandingPage = () => {
   const {data: session} = useSession();
@@ -55,9 +56,9 @@ const LandingPage = () => {
             <br />
             tools, Accurate Prediction and Growing Community.
           </p>
-          <button type="button" className="explore_btn">
+          <Link type="button" href="/#feed" className="explore_btn">
             Explore Now!
-          </button>
+          </Link>
         </div>
         <div className="col2 mx-10">
           <Image src={"/Hero.png"}

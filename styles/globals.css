@@ -5,7 +5,6 @@
   width: 70%;
   padding: 10px;
   box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
-  border-radius: 5%;
 }
 .product-image {
   width: 100%;
@@ -235,7 +234,7 @@ button {
 
 /* PostCard */
 .post_card {
-  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
+  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full;
 }
 
 .flex-center {

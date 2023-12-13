@@ -120,7 +120,7 @@ const page = ({ params }) => {
             &#10006;
           </button>
         </div>
-        <div className="product-image">
+        <div className="product-image h-[500px] flex items-center">
           <img src={myOrder.image || ""} alt="Product image" />
         </div>
         <div className="product-info">
@@ -193,26 +193,7 @@ const page = ({ params }) => {
         </div>
       </div>
 
-      {/*YEH NICHE KA PHELE WALA CODE HAI*/}
 
-      {/* <div className="card">
-                <div className="content">
-                    <label htmlFor="">Name: </label>
-                    <input className="input" type="text" placeholder={myOrder.name || ''} disabled/><br />
-                    <label htmlFor="">Description: </label>
-                    <input className="input" type="text" placeholder={myOrder.description || ''} disabled/><br />
-                    <label htmlFor="">Owner: </label>
-                    <input className="input" type="text" placeholder={myOrder.id || ''} disabled/><br />
-                    <label htmlFor="">Rate: </label>
-                    <input className="input" type="text" placeholder={myOrder.price || ''} disabled/><br />
-                    <label htmlFor="">Type: </label>
-                    <input className="input" type="text" placeholder={myOrder.type || ''} disabled/><br />
-                    <label htmlFor="">Location: </label>
-                    <input className="input" type="text" placeholder={myOrder.location || ''} disabled/><br />
-                    <label htmlFor="">Contact: </label>
-                    <input className="input" type="text" placeholder={myOrder.contact || ''} disabled/><br />
-                </div>
-            </div> */}
     </div>
   );
 };
