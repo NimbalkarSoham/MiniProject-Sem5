@@ -122,13 +122,14 @@ const myOrders = ({ params }) => {
                             <h1 className='font-light'><span className='font-medium'>Contact:&nbsp;</span>{order?.owner.phone}</h1>
                             <h1 className='font-light'><span className='font-medium'>Ordered on:&nbsp;</span>{order?.createdAt.substring(0,10)}</h1>
                         </div>
-                        <div className="return-btn">
+                        {order.status=="OPEN" ?  <div className="return-btn">
                         <button className='green1 text-white px-3 py-2' onClick={handleReturn}>Return</button>
                         <div id='otp' className="otp hidden"> {/* Is div ke andar form bana. */}
                                 <input type="number" id='otp-input' className='my-3 w-36 p-1 border-[1px] border-black' placeholder='Enter OTP' onChange={(e) => {setOtp(e.target.value)}}/>
                                 <button className='green1 text-white px-3 py-2 mx-4' id='otp-btn' onClick={otpSent?  () => {verifyOTP(order)} : () => {sendOtp(order.owner.phone)}}>{otpSent?"Verify":"Send OTP"}{submitting?"..":""}</button>
                             </div>
-                        </div>
+                        </div> : <h1>status returned!</h1>}
+                       
                     </div>
                 ))}
             </div>
