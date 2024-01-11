@@ -52,6 +52,11 @@ const Nav = () => {
                     WEATHER
                 </Link>
 
+                <Link href="/scheme" 
+                className="black_btn">
+                    SCHEMES
+                </Link>
+
                 {/* <Link href="/" 
                 className="black_btn">
                     CART
