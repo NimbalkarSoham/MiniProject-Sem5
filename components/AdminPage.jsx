@@ -33,8 +33,8 @@ const AdminPage = () => {
 
     
   return (
-    <>
-        <div className="border-2 px-5 bg-slate-100">
+    <div className='p-5 bg-slate-100'>
+        <div className="border-2 p-5 flex flex-col gap-5 mb-16">
             <h1 className='font-bold text-3xl'>Users Pending for verification</h1>
             <div className="bg">
                 {allUsers.map((user) => {
@@ -50,20 +50,22 @@ const AdminPage = () => {
                 })}
             </div>
         </div>
-        <h1>Products pending for verification</h1>
-        <div className='mt-16 prompt_layout mx-5'>
-            {allPosts.map((post) => (
-                post.status == 'not-verified'?(
-                    <Card
-                        key={post._id}
-                        post={post}
-                        handleEdit={() =>{}}
-                        handleDelete={() =>{}}
-                    />
-                ):(<></>)
-            ))}
+        <div className="border-2 p-5">
+            <h1 className='font-bold text-3xl'>Products pending for verification</h1>
+            <div className='mt-3 prompt_layout mx-5'>
+                {allPosts.map((post) => (
+                    post.status == 'not-verified'?(
+                        <Card
+                            key={post._id}
+                            post={post}
+                            handleEdit={() =>{}}
+                            handleDelete={() =>{}}
+                        />
+                    ):(<></>)
+                ))}
+            </div>
         </div>
-    </>
+    </div>
     
   )
 }
