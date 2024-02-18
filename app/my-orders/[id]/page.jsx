@@ -124,7 +124,7 @@ const myOrders = ({ params }) => {
                         </div>
                         {order.status=="OPEN" ?  <div className="return-btn">
                         <button className='green1 text-white px-3 py-2' onClick={handleReturn}>Return</button>
-                        <div id='otp' className="otp hidden"> {/* Is div ke andar form bana. */}
+                            <div id='otp' className="otp hidden"> {/* Is div ke andar form bana. */}
                                 <input type="number" id='otp-input' className='my-3 w-36 p-1 border-[1px] border-black' placeholder='Enter OTP' onChange={(e) => {setOtp(e.target.value)}}/>
                                 <button className='green1 text-white px-3 py-2 mx-4' id='otp-btn' onClick={otpSent?  () => {verifyOTP(order)} : () => {sendOtp(order.owner.phone)}}>{otpSent?"Verify":"Send OTP"}{submitting?"..":""}</button>
                             </div>

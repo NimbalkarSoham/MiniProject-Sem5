@@ -2,20 +2,24 @@
 import React, { useEffect } from "react";
 import Card from "./Card";
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 
-const PostCardList = ({allPosts}) => {
+const PostCardList = ({ allPosts }) => {
+  const { data: session } = useSession();
   return (
-    <div className='mt-16 prompt_layout'>
-      {allPosts.map((post) => (
-        post.status == 'verified'?(
-          <Card
-          key={post._id}
-          post={post}
-          handleEdit={() => {}}
-          handleDelete={() => {}}
-        />
-        ):(<></>)
-      ))}
+    <div className="mt-16 prompt_layout">
+      {allPosts.map((post) => {
+        if (post.creator != session?.user.id && post.status == "verified") {
+          return (
+            <Card
+              key={post._id}
+              post={post}
+              handleEdit={() => {}}
+              handleDelete={() => {}}
+            />
+          );
+        }
+      })}
     </div>
   );
 };
@@ -27,6 +31,7 @@ const Feed = () => {
   const [searchedResults, setSearchedResults] = useState([]);
 
   const fetchPost = async () => {
+    debugger;
     const response = await fetch("/api/product");
     const data = await response.json();
     console.log(data);
@@ -68,9 +73,7 @@ const Feed = () => {
         />
       </form>
       {searchText ? (
-        <PostCardList
-          allPosts={searchedResults}
-        />
+        <PostCardList allPosts={searchedResults} />
       ) : (
         <PostCardList allPosts={allPosts} />
       )}
