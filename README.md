@@ -26,7 +26,10 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <ul>
+         <li><a href="#about-the-project">About The Project</a></li>
+        <li><a href="#screeshots">Screenshots</a></li>
+      </ul>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
@@ -52,17 +55,53 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Welcome to the README for our farming tools and machinery web portal project. This platform is designed to facilitate farmers in buying or renting farming equipment easily. It provides a convenient online marketplace for agricultural tools.
+Welcome to **Agrifarm**, an innovative web portal designed to revolutionize how farmers access farming tools and machinery. Whether it's renting or purchasing equipment, Agrifarm serves as a one-stop marketplace that simplifies the process, making essential farming resources more accessible and affordable for all farmers.
 
-Here's why this project is important:
-- Enables easy access to essential farming tools.
-- Aims to improve the efficiency and affordability of equipment acquisition for farmers.
+### Why Agrifarm Matters:
+- **Streamlined Access**: Agrifarm provides an intuitive platform for farmers to easily find, compare, and acquire the right tools for their agricultural needs.
+- **Cost-Effective Solutions**: By offering both rental and purchasing options, the platform empowers small and large-scale farmers alike to manage costs effectively.
+- **Data-Driven Insights**: Integrated with machine learning capabilities, Agrifarm enhances decision-making with tools like crop disease prediction, equipment price estimation, and tool recommendations.
 
-Feel free to contribute or suggest enhancements that can make this platform even better!
+With a user-friendly interface and powerful features, Agrifarm is built to foster collaboration and promote sustainable farming practices, driving efficiency and productivity in agriculture.
+
+Contributions and suggestions are welcome to further enhance the platform's functionality and usability!
+
+---
+
+## Technical Overview
+
+Agrifarm is built with a modern, scalable architecture, designed to provide farmers with seamless access to essential tools and equipment. The platform integrates several technologies and features aimed at enhancing user experience and data-driven decision-making.
+
+### 1. Front-End
+   - **Framework**: The front-end is developed using **NEXT.js**, offering a dynamic, responsive interface for users to search, browse, and rent equipment.
+   - **Design**: The UI/UX is designed to be intuitive, allowing farmers with varying levels of technical expertise to navigate easily. It's mobile-friendly, ensuring access on various devices.
+
+### 2. Back-End
+   - **Database**: **MongoDB** is used as the database to store user profiles, equipment listings, transaction history, and machine learning model data. Its flexibility helps manage varying types of agricultural equipment records.
+
+### 3. Machine Learning Models
+   - **Crop Disease Prediction**: A machine learning model (Convolutional Neural Network, such as **VGG16**) is integrated for crop disease prediction. Farmers can upload images of crops, and the model analyzes them to predict potential diseases with high accuracy.
+   - **Price Prediction**: A **Regression Model** (e.g., **XGBoost**) is used for predicting rental prices based on historical usage patterns, equipment type, and seasonal trends.
+   - **Tool Recommendation**: A **Decision Tree Algorithm** is implemented for recommending tools and equipment based on user inputs like farm size, budget, and intended agricultural activity.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- SCREENSHOTS OF THE PROJECT -->
+## Screenshots of our project
+<br></br>
+![image](https://github.com/user-attachments/assets/5587c3ff-4c24-4f3e-9def-b2afd9415ac9)
+![image](https://github.com/user-attachments/assets/3f812cc0-220b-4208-bfa6-67e5e30de77b)
+![image](https://github.com/user-attachments/assets/d2e7fee6-1c10-4657-8c10-719d4920dccc)
+![image](https://github.com/user-attachments/assets/21991e71-266a-4316-8cdd-2084fd8524c4)
+![image](https://github.com/user-attachments/assets/f7c355fe-2966-40a3-932a-c60e711818af)
+![image](https://github.com/user-attachments/assets/9e5855c3-517a-4a5f-9bb0-9d8e38311251)
+![image](https://github.com/user-attachments/assets/e2078fb9-bcc8-4f25-8af0-33c2ddb025b2)
+![image](https://github.com/user-attachments/assets/a3fcc49c-e4aa-4621-9790-eafbc45c1481)
+![image](https://github.com/user-attachments/assets/c66f7a4e-eb34-400a-8e52-83d3e2d53a49)
+![image](https://github.com/user-attachments/assets/689c923d-2102-4a9d-9b90-aab0b0d1a9a7)
+![image](https://github.com/user-attachments/assets/fc8febe2-1507-437a-a5c6-46f2932b2fd6)
+![image](https://github.com/user-attachments/assets/ce0bc960-1b25-410c-b229-10faa9e553e8)
 
 
 ### Built With
