@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import { Router } from "next/router";
 import { useRouter } from "next/navigation";
 
 import Form from "@components/Form";
@@ -18,17 +17,18 @@ const CreateProduct = () => {
     image: "",
   });
   const fetchUser = async () => {
-    const response = await fetch(`/api/users/${session?.user.id}/`);
-    const user = await response.json();
-    setUserData(user);
-    // console.log(userData); // This won't work as expected due to asynchronous nature
-    localStorage.setItem('user', JSON.stringify(user));
+    if (session) {
+      const response = await fetch(`/api/users/${session?.user.id}/`);
+      const user = await response.json();
+      setUserData(user);
+      localStorage.setItem('user', JSON.stringify(user));
+    }
   };
 
   useEffect(() => {
-    // Fetch user data when the component mounts
     fetchUser();
   }, [session]);
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
 
@@ -50,7 +50,6 @@ const CreateProduct = () => {
   };
 
   const createProduct = async (e) => {
-    debugger;
     e.preventDefault();
     
     setSubmitting(true);
@@ -58,7 +57,6 @@ const CreateProduct = () => {
     const fileInput = Array.from(form.elements).find(
       ({ name }) => name === "file"
     );
-    //console.log(fileInput);
     const formData = new FormData();
 
     for (const file of fileInput.files) {
@@ -74,23 +72,24 @@ const CreateProduct = () => {
         body: formData,
       }
     ).then((r) => r.json());
-    //console.log(data);
 
     try {
-      const response = await fetch("api/product/new", {
-        method: "POST",
-        body: JSON.stringify({
-          userId: session?.user.id,
-          name: post.name,
-          description: post.description,
-          price: post.price,
-          image: data.secure_url,
-          location: post.location,
-        }),
-      });
+      if (session) {
+        const response = await fetch("api/product/new", {
+          method: "POST",
+          body: JSON.stringify({
+            userId: session?.user.id,
+            name: post.name,
+            description: post.description,
+            price: post.price,
+            image: data.secure_url,
+            location: post.location,
+          }),
+        });
 
-      if (response.ok) {
-        router.push("/");
+        if (response.ok) {
+          router.push("/");
+        }
       }
     } catch (error) {
       console.log(error);
@@ -100,18 +99,21 @@ const CreateProduct = () => {
   };
   
   return (
-    <>{userData.isVerified == "verified"?(<Form
-        type="Create"
-        post={post}
-        setPost={setPost}
-        submitting={submitting}
-        handleSubmit={createProduct}
-        handleImageChange={handleImageChange}/>):(<h4>account is under verification!</h4>)}
-    
-  
+    <>
+      {userData && userData.isVerified === "verified" ? (
+        <Form
+          type="Create"
+          post={post}
+          setPost={setPost}
+          submitting={submitting}
+          handleSubmit={createProduct}
+          handleImageChange={handleImageChange}
+        />
+      ) : (
+        <h4>Account is under verification!</h4>
+      )}
     </>
-    
   );
 };
 
-export default CreateProduct;
+export default CreateProduct;

@@ -60,7 +60,7 @@ const WeatherCard = ({ dayData }) => {
       </div>
     
       <div>
-        <img className="weather-image" src={randomImageUrl} alt={dayData.weather.main} />
+        {randomImageUrl && <img className="weather-image" src={randomImageUrl} alt={dayData.weather.main} />}
       </div>
 
       <div>

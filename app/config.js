@@ -12,6 +12,10 @@ const firebaseConfig = {
     appId: "1:387483679307:web:edbe44bf6c5b4189f2ebce"
 };
 
+if (!firebaseConfig) {
+    throw new Error("Firebase configuration is missing.");
+}
+
 const app = initializeApp(firebaseConfig);
 // const db = getDatabase(app);
 

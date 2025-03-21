@@ -33,23 +33,6 @@ const KycForm = () => {
     const [ confirmationResult, setConfirmationResult] = useState(null);
     const [otpSent, setSentOtp] = useState(false);
 
-    // const sendOtp = (event) => {
-    //     event.preventDefault();
-    //     configureCaptcha();
-    //     let pn = "+91" + formInputs.contact;
-    //     let av = window.recaptchaVerifier;
-    //     firebase.auth().signInWithPhoneNumber(pn, av)
-    //         .then(res => {
-    //             setFinal(res);
-    //             console.log(res);
-    //             console.log("OTP sent");
-    //             alert("OTP sent");
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         })
-    // }
-
     const sendOtp = async (e) => {
         e.preventDefault();
         try {
@@ -64,22 +47,11 @@ const KycForm = () => {
         }
     }
 
-    // const hadleOtpSubmit = async () => {
-    //     try{
-            
-    //         setOtp('');
-    //     }
-    //     catch(err) {
-    //         console.log(err);
-    //     }
-    // }
-
     const handleSubmit = async (e) => {
         debugger;
         e.preventDefault();
         const form = e.currentTarget;
         const fileInput = Array.from(form.elements).find(({name}) => name === 'file')
-        //console.log(fileInput);
         const formData = new FormData();
 
         for( const file of fileInput.files ){
@@ -93,34 +65,36 @@ const KycForm = () => {
             body: formData
         }).then(r => r.json());
         console.log(data);
-        await confirmationResult.confirm(otp)
-            .then(async res => {
-                try {
-                    const response = await fetch(`api/users/${session?.user.id}/`,{
-                        method: 'PUT',
-                        body: JSON.stringify({
-                            contact: formInputs.contact,
-                            address: formInputs.address,
-                            aadharNo: formInputs.aadharNo,
-                            aadharImage: data.secure_url,
+        if (confirmationResult) {
+            await confirmationResult.confirm(otp)
+                .then(async res => {
+                    try {
+                        const response = await fetch(`api/users/${session?.user.id}/`,{
+                            method: 'PUT',
+                            body: JSON.stringify({
+                                contact: formInputs.contact,
+                                address: formInputs.address,
+                                aadharNo: formInputs.aadharNo,
+                                aadharImage: data.secure_url,
+                            })
                         })
-                    })
-                    
-                    if(response.ok){
-                        console.log("Successfully Submitted")
-                        location.reload();
+                        
+                        if(response.ok){
+                            console.log("Successfully Submitted")
+                            location.reload();
+                        }
+                    } catch (error) {
+                        console.log(error);
                     }
-                } catch (error) {
-                    console.log(error);
-                }
-            })
-            .catch(err => {
-                console.log(err);
-                alert("Invalid OTP");
-            })
-        
+                })
+                .catch(err => {
+                    console.log(err);
+                    alert("Invalid OTP");
+                })
+        } else {
+            console.log("Confirmation result is not available.");
+        }
     }
-
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];

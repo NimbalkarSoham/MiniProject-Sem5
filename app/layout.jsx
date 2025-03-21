@@ -10,6 +10,9 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
 
+    if (!metadata) {
+        throw new Error("Metadata is missing.");
+    }
 
     return (
         <html lang='en'>

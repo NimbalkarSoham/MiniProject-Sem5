@@ -4,7 +4,6 @@ import { connectToDb } from "@utils/database";
 export const POST = async (req) => {
     console.log("route called");
     
-
     try {
         const body = await req.json();
 
@@ -13,10 +12,14 @@ export const POST = async (req) => {
         }
 
         const { owner, customer, product, shippingAddress, rate } = body;
+
+        if (!owner || !customer || !product || !shippingAddress || !rate) {
+            throw new Error("Missing required fields in the request body.");
+        }
+
         console.log(owner);
         await connectToDb();
         const newOrder = new Order({
-            // creator: customer,
             owner, 
             customer, 
             product, 

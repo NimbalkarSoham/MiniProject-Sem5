@@ -4,6 +4,10 @@ import { connectToDb } from "@utils/database";
 export const POST = async (req) => {
     const { userId, name, description, price, image, location } = await req.json();
 
+    if (!userId || !name || !description || !price || !image || !location) {
+        return new Response("Missing required fields", { status: 400 });
+    }
+
     try {
         await connectToDb();
         const newProduct = new Product({
